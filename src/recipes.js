@@ -1,5 +1,6 @@
 const recipes = [
   {
+    id: "my-favourite-dish",
     name: "My favourite dish",
     ingredients: [
       {
@@ -15,6 +16,7 @@ const recipes = [
     ],
   },
   {
+    id: "my-favourite-cake",
     name: "My favourite cake",
     ingredients: [
       {
