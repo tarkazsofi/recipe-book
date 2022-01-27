@@ -11,13 +11,11 @@ const App = () => {
       <h1>Recipe Book</h1>
       <nav>
         <ul>
-          {recipes.map((recipe) => {
-            return (
-              <li key={recipe.id}>
-                <Link to={`/recipe/${recipe.id}`}>{recipe.name}</Link>
-              </li>
-            );
-          })}
+          {recipes.map((recipe) => (
+            <li key={recipe.id}>
+              <Link to={`/recipe/${recipe.id}`}>{recipe.name}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
       <Link to="/settings">Settings</Link>

@@ -3,23 +3,21 @@ import recipes from "./recipes";
 
 const Recipe = () => {
   const params = useParams();
-  const recipe = recipes.find((recipeToFind) => {
-    return recipeToFind.id === params.recipeId;
-  });
+  const recipe = recipes.find(
+    (recipeToFind) => recipeToFind.id === params.recipeId
+  );
 
   return (
     <div>
       <h2>{recipe.name}</h2>
       <h3>Ingredients:</h3>
       <ul>
-        {recipe.ingredients.map((ingredient, ingredientIndex) => {
-          return (
-            <li key={ingredientIndex}>
-              {ingredient.amount}
-              {ingredient.unit} {ingredient.name}
-            </li>
-          );
-        })}
+        {recipe.ingredients.map((ingredient, ingredientIndex) => (
+          <li key={ingredientIndex}>
+            {ingredient.amount}
+            {ingredient.unit} {ingredient.name}
+          </li>
+        ))}
       </ul>
     </div>
   );
