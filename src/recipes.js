@@ -2,6 +2,7 @@ const recipes = [
   {
     id: "my-favourite-dish",
     name: "My favourite dish",
+    portions: 4,
     ingredients: [
       {
         name: "potatoes",
@@ -18,6 +19,7 @@ const recipes = [
   {
     id: "my-favourite-cake",
     name: "My favourite cake",
+    portions: 12,
     ingredients: [
       {
         name: "sugar",
