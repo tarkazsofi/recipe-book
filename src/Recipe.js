@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import recipes from "./recipes";
-
-const roundToThreeDigits = (number) => Math.round(number * 1000) / 1000;
+import IngredientGroup from "./IngredientGroup";
 
 const Recipe = () => {
   const params = useParams();
@@ -25,35 +24,21 @@ const Recipe = () => {
       />
       <h3>Ingredients:</h3>
       {recipe.ingredientGroups.length === 1 && (
-        <ul>
-          {recipe.ingredientGroups[0].ingredients.map(
-            (ingredient, ingredientIndex) => (
-              <li key={ingredientIndex}>
-                {roundToThreeDigits(
-                  (portions * ingredient.amount) / recipe.portions
-                )}
-                {ingredient.unit} {ingredient.name}
-              </li>
-            )
-          )}
-        </ul>
+        <IngredientGroup
+          ingredients={recipe.ingredientGroups[0].ingredients}
+          portions={portions}
+          recipePortions={recipe.portions}
+        />
       )}
       {recipe.ingredientGroups.length > 1 &&
         recipe.ingredientGroups.map((ingredientGroup) => (
-          <div>
+          <div key={ingredientGroup.name}>
             <h4>{ingredientGroup.name}</h4>
-            <ul>
-              {ingredientGroup.ingredients.map(
-                (ingredient, ingredientIndex) => (
-                  <li key={ingredientIndex}>
-                    {roundToThreeDigits(
-                      (portions * ingredient.amount) / recipe.portions
-                    )}
-                    {ingredient.unit} {ingredient.name}
-                  </li>
-                )
-              )}
-            </ul>
+            <IngredientGroup
+              ingredients={ingredientGroup.ingredients}
+              portions={portions}
+              recipePortions={recipe.portions}
+            />
           </div>
         ))}
     </div>
