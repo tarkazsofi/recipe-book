@@ -24,16 +24,38 @@ const Recipe = () => {
         }}
       />
       <h3>Ingredients:</h3>
-      <ul>
-        {recipe.ingredients.map((ingredient, ingredientIndex) => (
-          <li key={ingredientIndex}>
-            {roundToThreeDigits(
-              (portions * ingredient.amount) / recipe.portions
-            )}
-            {ingredient.unit} {ingredient.name}
-          </li>
+      {recipe.ingredientGroups.length === 1 && (
+        <ul>
+          {recipe.ingredientGroups[0].ingredients.map(
+            (ingredient, ingredientIndex) => (
+              <li key={ingredientIndex}>
+                {roundToThreeDigits(
+                  (portions * ingredient.amount) / recipe.portions
+                )}
+                {ingredient.unit} {ingredient.name}
+              </li>
+            )
+          )}
+        </ul>
+      )}
+      {recipe.ingredientGroups.length > 1 &&
+        recipe.ingredientGroups.map((ingredientGroup) => (
+          <div>
+            <h4>{ingredientGroup.name}</h4>
+            <ul>
+              {ingredientGroup.ingredients.map(
+                (ingredient, ingredientIndex) => (
+                  <li key={ingredientIndex}>
+                    {roundToThreeDigits(
+                      (portions * ingredient.amount) / recipe.portions
+                    )}
+                    {ingredient.unit} {ingredient.name}
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
         ))}
-      </ul>
     </div>
   );
 };
