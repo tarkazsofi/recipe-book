@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import recipes from "./recipes";
 import IngredientGroup from "./IngredientGroup";
+import MethodGroup from "./MethodGroup";
 
 const Recipe = () => {
   const params = useParams();
@@ -39,6 +40,17 @@ const Recipe = () => {
               portions={portions}
               recipePortions={recipe.portions}
             />
+          </div>
+        ))}
+      <h3>Method:</h3>
+      {recipe.methodGroups.length === 1 && (
+        <MethodGroup steps={recipe.methodGroups[0].steps} />
+      )}
+      {recipe.methodGroups.length > 1 &&
+        recipe.methodGroups.map((methodGroup) => (
+          <div key={methodGroup.name}>
+            <h4>{methodGroup.name}</h4>
+            <MethodGroup steps={methodGroup.steps} />
           </div>
         ))}
     </div>

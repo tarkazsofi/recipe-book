@@ -35,6 +35,16 @@ const recipes = [
         ],
       },
     ],
+    methodGroups: [
+      {
+        name: "Side",
+        steps: ["Peel potatoes", "Wash leeks", "Cut vegetables"],
+      },
+      {
+        name: "Meat",
+        steps: ["Cut bacon", "Cut chicken", "Salt chicken"],
+      },
+    ],
   },
   {
     id: "my-favourite-cake",
@@ -54,6 +64,11 @@ const recipes = [
             unit: "kg",
           },
         ],
+      },
+    ],
+    methodGroups: [
+      {
+        steps: ["Sift flour", "Mix sugar with eggs", "Soften butter"],
       },
     ],
   },
